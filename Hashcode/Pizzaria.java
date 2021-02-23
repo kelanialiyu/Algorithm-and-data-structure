@@ -7,24 +7,27 @@ public class Pizzaria{
     int teamOfThrees;
     int teamOfFours;
     ArrayList<Pizza> pizzas;
+    public Pizzaria(){
+        
+    }
     public void Optimizer(){
-        int total=0;
         while(teamOfTwos>0 && pizzas.size()>=2){
             Pizza[] bestTwo = this.selectBestTwo();
-            System.out.printf("%d %s %s", 2,bestTwo[0].name,bestTwo[1].name);
+            System.out.printf("%d %s %s \n", 2,bestTwo[0].name,bestTwo[1].name);
             pizzas.removeAll(Arrays.asList(bestTwo));
-            total+=2;
+            teamOfTwos--;
         }
         while(teamOfThrees>0 && pizzas.size()>=3){
             Pizza[] bestThree = this.selectBestThree();
-            System.out.printf("%d %s %s %s", 3,bestThree[0].name,bestThree[1].name,bestThree[2].name);
+            System.out.printf("%d %s %s %s \n", 3,bestThree[0].name,bestThree[1].name,bestThree[2].name);
             pizzas.removeAll(Arrays.asList(bestThree));
-            
+            teamOfThrees--;
         }
         while(teamOfFours>0 && pizzas.size()>=4){
             Pizza[] bestFour = this.selectBestFour();
-            System.out.printf("%d %s %s %s %s", 4,bestFour[0].name,bestFour[1].name,bestFour[2].name,bestFour[3].name);
+            System.out.printf("%d %s %s %s %s \n", 4,bestFour[0].name,bestFour[1].name,bestFour[2].name,bestFour[3].name);
             pizzas.removeAll(Arrays.asList(bestFour));
+            teamOfFours--;
         }
     }
     Pizza[] selectBestTwo(){
