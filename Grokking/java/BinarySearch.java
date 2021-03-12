@@ -1,25 +1,25 @@
 import java.util.*;
 import java.lang.*;
 class BinarySearch{
-	public static <T> int binarySearch(int[] list, int search){
-		int high = 0;
-		int low = list.length-1;
+	public static int binarySearch(int[] list, int search){
+		int high = list.length-1;
+		int low =0 ;
 		int mid =0;
-		while(high > low){
+		while(!(low>high)){
 			mid = (high+low)/2;
 			if(list[mid]==search){
 				return mid;
 			}
 			else if(list[mid]<search){
-				high = mid-1;
-			}
-			else{
 				low = mid+1;
 			}
+			else{
+				high = mid-1;
+			}
 		}
-		return -1* mid;
+		return -1;
 	}
 	public static void main(String[] args) {
-		System.out.println(binarySearch(new int[]{2,4,8,9,12},13));
+		System.out.println(binarySearch(new int[]{2,4,8,9,12},12));
 	}
 }
